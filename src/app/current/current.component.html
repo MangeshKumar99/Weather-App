@@ -1,0 +1,70 @@
+
+<h1 class="bg-success text-white text-center">Weather App</h1>
+<hr>
+<select class="btn btn-outline-warning" id="mySelect" #city>
+    <option value="Bangalore">Bangalore</option>
+    <option value="Chennai">Chennai</option>
+    <option value="Mysore">Mysore</option>
+    <option value="New Delhi">New Delhi</option>
+    <option value="Hyderabad">Hyderabad</option>
+  </select><br><br>
+<input #cityname type="text" id="add" placeholder="Add city" /><br><br>
+<div class="buttons ">
+<button class=" btn btn-outline-primary mr-3" type="button" (click)="myFunction2(cityname.value)">Add city</button><br><br>
+<button class="btn btn-outline-secondary mr-3" (click)="findData(city.value)">Current Weather</button><br><br>
+<button class="btn btn-outline-success mr-3"(click)="myFunction1()">Remove selected city</button><br><br>
+<button class="btn btn-outline-danger mr-3"(click)="save(cityname.value)">Save city</button><br><br>
+<button class="btn btn-outline-warning mr-3"(click)="retrieve()">Retrieve city</button><br><br>
+<button class="btn btn-outline-primary mr-3"type="button"(click)="getForecast(city.value)">Forecast</button>
+</div><br><br>
+<div class="card" style="width: 18rem;">
+  <img src="{{place.current.weather_icons[0]}}" class="card-img-top" alt="">
+  <div class="card-body">
+    <h5 class="card-title">{{place.location.name}}</h5>
+    <p class="card-text">
+      Country:{{place.location.country}}<br>
+      Latitude:{{place.location.lat}}<br>
+      Longitude:{{place.location.lon}}<br>
+      Temperature:{{place.current.temperature}}<br>
+      Weather:{{place.current.weather_descriptions[0]}}
+    </p> 
+  </div>
+</div><br><br>
+
+<div class="card" style="width: 18rem;">
+  <img src="{{weather.current.weather_icons[0]}}" class="card-img-top" alt="">
+  <div class="card-body">
+    <h5 class="card-title">{{weather.location.name}}</h5>
+    <p class="card-text">
+      Country:{{weather.location.country}}<br>
+      Latitude:{{weather.location.lat}}<br>
+      Longitude:{{weather.location.lon}}<br>
+      Temperature:{{weather.current.temperature}}<br>
+      Weather:{{weather.current.weather_descriptions[0]}}
+    </p> 
+  </div>
+</div><br><br>
+
+<div *ngFor="let detail of forecasting">
+  <div class="card" style="width: 18rem;">
+    <img src="http://openweathermap.org/img/wn/{{detail.weather[0].icon}}@2x.png "class="card-img-top" alt="">
+    <div class="card-body">
+      <h5 class="card-title">{{detail.dt_txt}}</h5>
+      <p class="card-text">
+        Weather:{{detail.weather[0].description}}<br>
+        Temperature:{{detail.main.temp}}<br>
+        Humidity:{{detail.main.humidity}}<br>
+        Pressure:{{detail.main.pressure}}<br>
+      </p> 
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
